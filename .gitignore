@@ -1,0 +1,52 @@
+# Binaries for programs and plugins
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Output of build process
+bin/
+*.out
+*.a
+
+# Vendor directory (for dependencies, if not using modules)
+vendor/
+
+# Dependency directories (specific to Go modules)
+/go/pkg
+
+# Go coverage files
+*.cover
+*.cov
+
+# Test binary
+*.test
+
+# IDE/editor specific files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+*.cache
+
+# Go workspace files
+*.mod
+*.sum
+
+# Docker related files
+**/Dockerfile
+docker-compose.yml
+
+# macOS specific files
+.DS_Store
+
+# Node modules (if front-end code is present in the same repo)
+node_modules/
+
+# Byebug command history
+.byebug_history

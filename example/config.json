@@ -1,0 +1,43 @@
+{
+    "aws": {
+      "access_key": "AKIAIOSFODNN7EXAMPLE",
+      "secret_key": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
+    },
+    "github": {
+      "token": "ghp_aBcDeFgHiJkLmNoPqRsTuVwXyZ0123456789",
+      "webhook_secret": "webhook_secret_abc123xyz789"
+    },
+    "database": {
+      "host": "db.example.com",
+      "username": "admin",
+      "password": "SuperSecretPass123!",
+      "connection_string": "mongodb+srv://admin:AnotherSecret456!@cluster0.example.com"
+    },
+    "api": {
+      "google_maps_key": "AIzaSyC93b6FxR4r4Q1jIxyz789example123",
+      "stripe_secret": "sk_live_1234567890abcdefghijklmn",
+      "mailgun_key": "key-3ax6xnjp29jd6fds4gc373sgvjxteol0",
+      "slack_token": "xoxb-123456789012-123456789012-ABCDEFG1234567890abcdefg",
+      "twilio_api_key": "SK1234567890abcdefghijklmnopqrstuv",
+      "sendgrid_api_key": "SG.WF1AsH1FRAz8CJHRaZVZg.fAKVbN-1jv8yjJh1Jh1Jh1example1234",
+      "dropbox_access_token": "sl.ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890abcdefghijklmnopqrstuvwxyz",
+      "huggingface_token": "hf_bBAODNcobFfisrEkswDbsWbHrpsDExxxxx"
+    },
+    "cosign": {
+      "cosign_private_key": "-----BEGIN COSIGN PRIVATE KEY-----\nbase64encodeddata\n-----END COSIGN PRIVATE KEY-----"
+    },
+    "sigstore": {
+      "sigstore_private_key": "-----BEGIN SIGSTORE PRIVATE KEY-----\nbase64encodeddata\n-----END SIGSTORE PRIVATE KEY-----"
+    },
+    "keys": {
+      "rsa_private_key": "-----BEGIN RSA PRIVATE KEY-----\nbase64encodeddata\n-----END RSA PRIVATE KEY-----",
+      "open_ssh_private_key": "-----BEGIN OPENSSH PRIVATE KEY-----\nbase64encodeddata\n-----END OPENSSH PRIVATE KEY-----",
+      "pgp_private_key": "-----BEGIN PGP PRIVATE KEY BLOCK-----\nbase64encodeddata\n-----END PGP PRIVATE KEY BLOCK-----",
+      "generic_private_key": "-----BEGIN PRIVATE KEY-----\nbase64encodeddata\n-----END PRIVATE KEY-----",
+      "dsa_private_key": "-----BEGIN DSA PRIVATE KEY-----\nbase64encodeddata\n-----END DSA PRIVATE KEY-----",
+      "ec_private_key": "-----BEGIN EC PRIVATE KEY-----\nbase64encodeddata\n-----END EC PRIVATE KEY-----",
+      "pkcs8_private_key": "-----BEGIN ENCRYPTED PRIVATE KEY-----\nbase64encodeddata\n-----END ENCRYPTED PRIVATE KEY-----",
+      "pem_certificate": "-----BEGIN CERTIFICATE-----\nMIIEpQIBAAKCAQEA7bq8\n-----END CERTIFICATE-----"
+    }
+  }
+  

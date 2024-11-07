@@ -14,7 +14,7 @@ var (
 	// API key patterns
 	CommonAPIPatterns = map[string]string{
 		"aws_access_key":               `(?i)AKIA[0-9A-Z]{16}`,
-		"aws_secret":                   `(?i)[0-9a-zA-Z/+]{40}`,
+		"aws_secret":                   `(?i)"?([0-9a-zA-Z/+]{40})"?`, // Updated pattern to capture entire secret
 		"github_token":                 `(?i)gh[pousr]_[A-Za-z0-9_]{36}`,
 		"google_api":                   `(?i)AIza[0-9A-Za-z\\-_]{35}`,
 		"stripe_key":                   `(?i)sk_live_[0-9a-zA-Z]{24}`,
@@ -44,7 +44,7 @@ var (
 	// Password patterns
 	PasswordPatterns = map[string]string{
 		"basic_password":   `(?i)password['":\s]*[=:]\s*['"]?[^\s'"]{8,}['"]?`,
-		"complex_password": `[A-Za-z\d@$!%*#?&]{8,}`,
+		"complex_password": `(?i)"?([A-Za-z\d@$!%*#?&]{8,})"?`, // Updated pattern to capture entire password
 	}
 
 	// Private key patterns

@@ -309,9 +309,9 @@ func getDescription(patternType string) string {
 var ErrContextCancelled = errors.New("operation cancelled by context")
 
 // MaskSecret masks the secret value for display
-func MaskSecret(secret string) string {
-	if len(secret) <= 4 {
+func MaskSecret(secret string, exposeCount int) string {
+	if len(secret) <= exposeCount {
 		return strings.Repeat("*", len(secret))
 	}
-	return secret[:2] + strings.Repeat("*", len(secret)-4) + secret[len(secret)-2:]
+	return secret[:exposeCount] + strings.Repeat("*", len(secret)-2*exposeCount) + secret[len(secret)-exposeCount:]
 }

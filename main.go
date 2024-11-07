@@ -84,7 +84,7 @@ func main() {
 		fmt.Printf("%d. Type: %s\n", i+1, result.Type)
 		fmt.Printf("   Description: %s\n", result.Description)
 		fmt.Printf("   Confidence: %.2f\n", result.Confidence)
-		fmt.Printf("   Value: %s\n", scanner.MaskSecret(result.Value))
+		fmt.Printf("   Value: %s\n", scanner.MaskSecret(result.Value, 2)) // Updated to include exposeCount
 		fmt.Printf("   Position: %d-%d\n", result.StartIndex, result.EndIndex)
 		fmt.Println()
 	}

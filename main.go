@@ -95,11 +95,7 @@ func main() {
 		fmt.Printf("%d. Type: %s\n", i+1, result.Type)
 		fmt.Printf("   Description: %s\n", result.Description)
 		fmt.Printf("   Confidence: %.2f\n", result.Confidence)
-		if maskSecrets {
-			fmt.Printf("   Value: %s\n", maskSecret(result.Value))
-		} else {
-			fmt.Printf("   Value: %s\n", result.Value)
-		}
+		fmt.Printf("   Value: %s\n", scanner.MaskSecret(result.Value, 2)) // Updated to include exposeCount
 		fmt.Printf("   Position: %d-%d\n", result.StartIndex, result.EndIndex)
 		fmt.Printf("   Line Number: %d\n", result.LineNumber)
 		fmt.Println()
@@ -156,13 +152,6 @@ func readStdin() (string, error) {
 	}
 
 	return builder.String(), nil
-}
-
-func maskSecret(secret string) string {
-	if len(secret) <= 4 {
-		return strings.Repeat("*", len(secret))
-	}
-	return secret[:2] + strings.Repeat("*", len(secret)-4) + secret[len(secret)-2:]
 }
 
 func printUsage() {

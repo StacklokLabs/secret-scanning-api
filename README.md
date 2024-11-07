@@ -132,17 +132,6 @@ BenchmarkScanner/large/8_workers    ~35µs/op    377 B/op  0 allocs/op
 BenchmarkScanner/large/16_workers   ~34µs/op    423 B/op  0 allocs/op
 ```
 
-[Previous README content continues...]
-       select {
-       case <-ctx.Done():
-           return nil, ctx.Err()
-       default:
-           matches := pattern.FindAll(...)
-           // ... process matches
-       }
-   }
-   ```
-
 4. **Streaming Operations**:
    ```go
    func (s *Scanner) StreamScan(ctx context.Context, reader io.Reader) (<-chan Result, error) {

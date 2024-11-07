@@ -19,6 +19,7 @@ type Result struct {
 	Value       string  `json:"value"`
 	StartIndex  int     `json:"start_index"`
 	EndIndex    int     `json:"end_index"`
+	LineNumber  int     `json:"line_number"`
 	Confidence  float64 `json:"confidence"`
 	Description string  `json:"description"`
 }
@@ -86,18 +87,35 @@ func (s *Scanner) scanChunk(ctx context.Context, chunk string, offset int) ([]Re
 
 		matches := pattern.FindAllStringIndex(chunk, -1)
 		for _, match := range matches {
+			lineNumber := strings.Count(chunk[:match[0]], "\n") + 1
 			result := Result{
 				Type:        patternName,
 				Value:       chunk[match[0]:match[1]],
 				StartIndex:  offset + match[0],
 				EndIndex:    offset + match[1],
+				LineNumber:  lineNumber,
 				Confidence:  calculateConfidence(chunk[match[0]:match[1]]),
 				Description: getDescription(patternName),
 			}
 			results = append(results, result)
 		}
 	}
-	return results, nil
+
+	// Group results by line number and select the highest confidence result
+	lineResults := make(map[int]Result)
+	for _, result := range results {
+		if existing, found := lineResults[result.LineNumber]; !found || result.Confidence > existing.Confidence {
+			lineResults[result.LineNumber] = result
+		}
+	}
+
+	// Convert the map back to a slice
+	finalResults := make([]Result, 0, len(lineResults))
+	for _, result := range lineResults {
+		finalResults = append(finalResults, result)
+	}
+
+	return finalResults, nil
 }
 
 // Scan performs the secret scanning on the provided text
@@ -297,6 +315,7 @@ func getDescription(patternType string) string {
 		"pkcs12_private":               "Possible PKCS12 private key detected",
 		"cosign_private":               "Possible Cosign private key detected",
 		"sigstore_private":             "Possible Sigstore private key detected",
+		"complex_password":             "Possible complex password detected",
 	}
 
 	if desc, ok := descriptions[patternType]; ok {
